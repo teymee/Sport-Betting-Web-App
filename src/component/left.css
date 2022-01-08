@@ -1,0 +1,40 @@
+.left-side{
+      background-color: #414657;
+      width: 20%;
+      border-radius: 7px;
+}
+
+.left-side h5{
+      color: grey;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+}
+
+.left-side ul{
+      list-style: none;
+    
+      padding: 0px !important;
+     
+}
+
+.left-side li{
+      padding: 25px 10px;
+     font-size: 13px;
+     color:#b0b3bb;
+      border-top: rgba(248, 248, 255,0.4) 1px solid;
+     cursor: pointer;
+}
+
+.left-side li:hover{
+
+      background-color: #4E5263;
+}
+
+
+.left-side  .active{
+      border-top: #1A96CA 1px solid;
+      border-bottom: #1A96CA 0.2px solid;
+      color: #1A96CA !important;
+      background-color: #4E5263;
+}

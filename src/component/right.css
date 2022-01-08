@@ -1,0 +1,39 @@
+.right-side {
+	background-color: #414657;
+	min-height: 300px;
+	width: 20%;
+	padding: 10px;
+	
+      background-color: #414351;
+}
+
+.betslip-header{
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 10px ;
+      color: rgb(248, 248, 255, 0.5);
+}
+
+/* .betslips{
+      background-color: rgba(26, 150, 202, 0.3);
+} */
+
+.betslip{
+      background-color: #484C5D;
+      display: flex;
+      font-size: 12px;
+      justify-content: space-around;
+      align-items: center;
+      color: rgb(248, 248, 255, 0.5);
+      margin-bottom: 20px;
+      cursor: pointer;
+}
+
+.betslip .fixture, .betslip .xg {
+      margin-top: -10px;
+}
+
+.betslip:hover{
+      background-color: #54586d;
+}
+
