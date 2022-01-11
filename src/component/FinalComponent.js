@@ -1,7 +1,7 @@
 import React from 'react'
-import CenterSection from './CenterSection'
-import LeftSidebar from './LeftSidebar'
-import RightSidebar from './RightSidebar'
+import CenterSection from './Center/CenterSection'
+import LeftSidebar from './Left/LeftSidebar'
+import RightSidebar from './Right/RightSidebar'
 
 function FinalComponent() {
       return (

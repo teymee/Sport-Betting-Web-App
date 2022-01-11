@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { BetContext } from "../context/bet-context";
+import { BetContext } from "../../context/bet-context";
 import "./center.css";
 
 function Match({ details, teams }) {
-	const bet = useContext(BetContext);
-
+	
+	const bet = useContext(BetContext)
 	const rearrangeTeam = (team, home) => {
 		let newTeams = [];
 		for (let i = 0; i < team.length; i++) {
@@ -29,22 +29,24 @@ function Match({ details, teams }) {
 
 	let fixture = rearrangeTeam(teams, details.home_team);
 	let finalOdd = rearrangeOdds(details.sites[0].odds.h2h);
+	
 	const insertBet = (odd) => {
-		bet.push({
+		const updateContext = bet.push({
 			fixture,
 			odd,
 			finalOdd,
 		});
-		console.log(bet);
+		
+		return updateContext
 	};
 
-	const team = fixture.map((item) => {
-		return <p>{item}</p>;
+	const team = fixture.map((item,index) => {
+		return <p key={index}>{item}</p>;
 	});
 
 	const odds = finalOdd.map((item, index) => {
 		return (
-			<span onClick={() => insertBet(index)}>
+			<span onClick={() => insertBet(index)} key={index}>
 				{Number.parseFloat(item).toPrecision(3)}
 			</span>
 		);

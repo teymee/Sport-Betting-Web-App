@@ -15,9 +15,9 @@ function LeftSidebar() {
                   method: 'GET',
                   url: 'https://odds.p.rapidapi.com/v1/sports',
                   headers: {
-                    'x-rapidapi-host': 'odds.p.rapidapi.com',
-                    'x-rapidapi-key': '71738864camshf00d52195179bb5p1c78dfjsn8fd7877ce2ec'
-                  }
+				"x-rapidapi-host": "odds.p.rapidapi.com",
+				"x-rapidapi-key": "0855b1cdf7msh52ad89e9f432c3fp126a9ejsncb3cac95c3da",
+			},
                 };
                 
                 axios.request(options).then(function (response) {

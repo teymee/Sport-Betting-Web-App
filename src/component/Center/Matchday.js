@@ -9,8 +9,8 @@ function Matchday({ day, games }) {
 		return dayNum[2] === date[2];
 	});
 
-     const finalGame = game.map((item)=>{
-           return <Match details={item} teams={item.teams} />
+     const finalGame = game.map((item, index)=>{
+           return <Match details={item} teams={item.teams} key={index}/>
      })
 
 	return (

@@ -11,7 +11,7 @@ function CenterSection() {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		// setIsLoading(true)
+		setIsLoading(true);
 		const options = {
 			method: "GET",
 			url: "https://odds.p.rapidapi.com/v1/odds",
@@ -24,7 +24,7 @@ function CenterSection() {
 			},
 			headers: {
 				"x-rapidapi-host": "odds.p.rapidapi.com",
-				"x-rapidapi-key": "71738864camshf00d52195179bb5p1c78dfjsn8fd7877ce2ec",
+				"x-rapidapi-key": "0855b1cdf7msh52ad89e9f432c3fp126a9ejsncb3cac95c3da",
 			},
 		};
 
@@ -39,6 +39,7 @@ function CenterSection() {
 			});
 	}, [league]);
 
+
 	const arraySort = (arr) => {
 		let date = [];
 
@@ -49,19 +50,12 @@ function CenterSection() {
 
 		let unique = [...new Set(date)];
 
-		
-
 		return unique;
 	};
 
-
-
-		const content = arraySort(games).map((item) => {
-			// return arraySort(item)
-			return <Matchday day={item} key={item.id} games={games} />;
-		});
-	
-		
+	const content = arraySort(games).map((item, index) => {
+		return <Matchday day={item} key={index} games={games} />;
+	});
 
 	// !isLoading && console.log(arraySort(games))
 
