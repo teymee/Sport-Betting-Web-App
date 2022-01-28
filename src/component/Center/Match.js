@@ -3,8 +3,7 @@ import { BetContext } from "../../context/bet-context";
 import "./center.css";
 
 function Match({ details, teams }) {
-	
-	const bet = useContext(BetContext)
+	const bet = useContext(BetContext);
 	const rearrangeTeam = (team, home) => {
 		let newTeams = [];
 		for (let i = 0; i < team.length; i++) {
@@ -29,18 +28,27 @@ function Match({ details, teams }) {
 
 	let fixture = rearrangeTeam(teams, details.home_team);
 	let finalOdd = rearrangeOdds(details.sites[0].odds.h2h);
-	
+	let rand = Math.random() * 1000 + 1;
+	let id = rand.toFixed(2);
+
 	const insertBet = (odd) => {
-		const updateContext = bet.push({
-			fixture,
-			odd,
-			finalOdd,
+		const isExist = bet.find((el) => {
+			return el.id === id;
 		});
-		
-		return updateContext
+
+		if (!isExist) {
+			const updateContext = bet.push({
+				fixture,
+				odd,
+				finalOdd,
+				id,
+			});
+
+			return updateContext;
+		}
 	};
 
-	const team = fixture.map((item,index) => {
+	const team = fixture.map((item, index) => {
 		return <p key={index}>{item}</p>;
 	});
 

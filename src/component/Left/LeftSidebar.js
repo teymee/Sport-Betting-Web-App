@@ -11,6 +11,8 @@ function LeftSidebar() {
 
 
       useEffect(() => {
+            const CancelToken = axios.CancelToken;
+		const source = CancelToken.source();
             const options = {
                   method: 'GET',
                   url: 'https://odds.p.rapidapi.com/v1/sports',
@@ -30,6 +32,10 @@ function LeftSidebar() {
                       console.error(error);
                 });
            
+                return () => {
+                  // cancel the request before component unmounts
+                  source.cancel();
+                };
       }, [])
 
      const redirectToLeague = (path)=>{

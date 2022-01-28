@@ -12,6 +12,9 @@ function CenterSection() {
 
 	useEffect(() => {
 		setIsLoading(true);
+		const CancelToken = axios.CancelToken;
+		const source = CancelToken.source();
+
 		const options = {
 			method: "GET",
 			url: "https://odds.p.rapidapi.com/v1/odds",
@@ -27,6 +30,7 @@ function CenterSection() {
 				"x-rapidapi-key": "0855b1cdf7msh52ad89e9f432c3fp126a9ejsncb3cac95c3da",
 			},
 		};
+		
 
 		axios
 			.request(options)
@@ -37,6 +41,12 @@ function CenterSection() {
 			.catch(function (error) {
 				console.error(error);
 			});
+
+			return () => {
+				// cancel the request before component unmounts
+				source.cancel();
+			    };
+		
 	}, [league]);
 
 
@@ -57,7 +67,7 @@ function CenterSection() {
 		return <Matchday day={item} key={index} games={games} />;
 	});
 
-	// !isLoading && console.log(arraySort(games))
+	
 
 	return (
 		<div className="center">
@@ -76,23 +86,6 @@ function CenterSection() {
 
 			<div className="matches">
 				{!isLoading && content}
-
-				{/* <div className="match">
-					<h5>15/01 Saturday</h5>
-					<div className="match-details">
-						<span className="kick-off">20:45</span>
-						<div className="teams">
-							<p>Gent</p>
-							<p>KV Kortrijk</p>
-						</div>
-
-						<div className="odds">
-							<span>1.52</span>
-							<span>1.52</span>
-							<span>1.52</span>
-						</div>
-					</div>
-				</div> */}
 			</div>
 		</div>
 	);

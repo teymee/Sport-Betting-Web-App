@@ -1,15 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Betslip from "./Betslip";
 
 import { BetContext } from "../../context/bet-context";
 import "./right.css";
 
 function RightSidebar() {
+	const [finalBetSlip, setFinalBetSlip] = useState([])
 	const bet = useContext(BetContext);
+	
 
-	const betslip = bet.map((bet) => {
-		return <Betslip slip={bet} />;
-	});
+	useEffect(()=>{
+		setFinalBetSlip([...bet])
+	},[bet,finalBetSlip])
+
+
+	let betslip
+	if(finalBetSlip.length > 0){
+		
+		 betslip = finalBetSlip.map((bet) => {
+			return <Betslip slip={bet} />;
+		});
+	}
+	
 
 	return (
 		<div className="right-side">
@@ -18,7 +30,7 @@ function RightSidebar() {
 				<h5>Cashout</h5>
 			</div>
 
-			<div className="betslips">{betslip}</div>
+			<div className="betslips">{finalBetSlip.length !== 0 && betslip}</div>
 		</div>
 	);
 }
